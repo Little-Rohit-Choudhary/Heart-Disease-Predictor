@@ -22,18 +22,18 @@ st.sidebar.header('Input Features')
 
 def get_user_input():
     age = st.sidebar.number_input('Age', min_value=0, max_value=120, value=50)
-    sex = st.sidebar.selectbox('Sex', options={'Male': 1, 'Female': 0})
-    cp = st.sidebar.selectbox('Chest Pain Type', options={'Typical': 0, 'Atypical': 1, 'Non-anginal': 2, 'Asymptomatic': 3})
+    sex = st.sidebar.selectbox('Sex (1 = male, 0 = female)', options=[0, 1])
+    cp = st.sidebar.selectbox('Chest Pain Type (0, 1, 2, 3)', options=[0, 1, 2, 3])
     trestbps = st.sidebar.number_input('Resting Blood Pressure', min_value=0, max_value=300, value=120)
     chol = st.sidebar.number_input('Serum Cholestoral in mg/dl', min_value=0, max_value=600, value=200)
-    fbs = st.sidebar.selectbox('Fasting Blood Sugar > 120 mg/dl', options={'True': 1, 'False': 0})
-    restecg = st.sidebar.selectbox('Resting Electrocardiographic Results', options={'Normal': 0, 'ST-T wave abnormality': 1, 'Left ventricular hypertrophy': 2})
+    fbs = st.sidebar.selectbox('Fasting Blood Sugar > 120 mg/dl (1 = true, 0 = false)', options=[0, 1])
+    restecg = st.sidebar.selectbox('Resting Electrocardiographic Results (0, 1, 2)', options=[0, 1, 2])
     thalach = st.sidebar.number_input('Maximum Heart Rate Achieved', min_value=0, max_value=250, value=150)
-    exang = st.sidebar.selectbox('Exercise Induced Angina', options={'Yes': 1, 'No': 0})
+    exang = st.sidebar.selectbox('Exercise Induced Angina (1 = yes, 0 = no)', options=[0, 1])
     oldpeak = st.sidebar.number_input('ST Depression Induced by Exercise', min_value=0.0, max_value=10.0, value=1.0)
-    slope = st.sidebar.selectbox('Slope of the Peak Exercise ST Segment', options={'Upsloping': 0, 'Flat': 1, 'Downsloping': 2})
-    ca = st.sidebar.selectbox('Number of Major Vessels Colored by Fluoroscopy', options=[0, 1, 2, 3])
-    thal = st.sidebar.selectbox('Thalassemia', options={'Normal': 1, 'Fixed defect': 2, 'Reversible defect': 3})
+    slope = st.sidebar.selectbox('Slope of the Peak Exercise ST Segment (0, 1, 2)', options=[0, 1, 2])
+    ca = st.sidebar.selectbox('Number of Major Vessels (0-3) Colored by Fluoroscopy', options=[0, 1, 2, 3])
+    thal = st.sidebar.selectbox('Thalassemia (1 = normal, 2 = fixed defect, 3 = reversable defect)', options=[0, 1, 2, 3])
 
     user_data = {
         'age': age,
@@ -50,8 +50,6 @@ def get_user_input():
         'ca': ca,
         'thal': thal
     }
-
-    # The values are already mapped correctly by the selectbox
     return user_data
 
 user_input = get_user_input()
